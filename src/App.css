@@ -1,0 +1,77 @@
+#root {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 3em;
+  padding: 0.75em;
+  will-change: filter;
+  transition: filter 30ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #f50404aa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(1) .logo {
+    animation: logo-spin infinite 2s linear;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 5s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #4728f1;
+}
+
+
+button:hover {
+  animation: button-hover 1s ease-in-out;
+}
+
+@keyframes button-hover {
+  0% { background-color: #10e951; }
+  100% { background-color: #ebe408; }
+}
+
+@keyframes button-pulse {
+  0% { transform: scale(1); }
+  10% { transform: scale(1.5); }
+  100% { transform: scale(1.2); }
+}
+
+button {
+  height: 3em;
+  color : "blue";
+  background: #1302f7;
+  animation: button-pulse 2s infinite;
+}
+
+.bg-image {
+  background-image: url('https://www.google.com/imgres?imgurl=https%3A%2F%2Fres.cloudinary.com%2Fpeople-matters%2Fimage%2Fupload%2Ffl_immutable_cache%2Cw_624%2Ch_351%2Cq_auto%2Cf_auto%2Fv1611723380%2F1611723379.jpg&tbnid=YO3op-JTSlchTM&vet=12ahUKEwitkJbL5qODAxXMcmwGHVBmAmgQMyghegUIARDCAQ..i&imgrefurl=https%3A%2F%2Fwww.peoplematters.in%2Farticle%2Ftechnology%2Ftech-hiring-in-2021-predicting-the-important-trends-of-the-new-decade-28261&docid=oYcnZvdDw8yzbM&w=624&h=351&q=tech%20image&ved=2ahUKEwitkJbL5qODAxXMcmwGHVBmAmgQMyghegUIARDCAQ.jpg');
+   /* Other background properties (optional) */
+  /* background-size: cover;   Ensure image covers the entire element */
+  /* background-repeat: no-repeat;   Prevent image repetition */
+  /* background-position: center;   Center the image  */
+}
