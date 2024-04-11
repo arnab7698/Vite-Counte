@@ -22,7 +22,7 @@ function PokeButton({pokeObject}) {
 
   return (
     <>
-      <Button
+      <Button 
         onClick={() => setOpen(!open)}
         aria-controls="example-fade-text"
         aria-expanded={open}

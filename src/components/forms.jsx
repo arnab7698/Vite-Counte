@@ -12,12 +12,12 @@ function DynamicForm() {
   
     return (
       <>
+        <h3>Enter your Value: {inputValue}</h3>
         <input
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />
-        <h2>Current Value: {inputValue}</h2>
         {/* <h2>Previous Value: {previousInputValue.current}</h2> */}
       </>
     );

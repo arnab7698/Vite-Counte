@@ -2,15 +2,15 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import AbdoolCounter from './App.jsx'
 import './index.css'
-import NavbarCustom from './components/navbar.jsx'
+import IconSideNav from './components/navbar.jsx'
 import Card from './components/card.jsx'
 import './Bootstrap/bootstrap-5.3.3-dist/css/bootstrap.min.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <NavbarCustom />
+    <IconSideNav />
     <div style={{ display: "flex", flexWrap: "wrap" }}>
-        
+    <h1 class="h1 text-center" id="pageHeaderTitle">🦋POKEMONS🦋</h1>
     </div>
 
     <div style={{ display: "flex", flexWrap: "wrap-reverse" }}>
