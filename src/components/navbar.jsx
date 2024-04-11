@@ -3,78 +3,69 @@
 
 // function NavbarCustom() {
 //     return(
-//         <nav className="navbar">
+//         <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-gradient-primary w-100">
+//             <div className="container-fluid">
 //             <ul className="navbar-links">
-//                 <li><a href="#">Home</a></li>
-//                 <li><a href="#">Photos</a></li>
-//                 <li><a href="#">Videos</a></li>
-//                 <li><a href="#">Contact Us</a></li>
+//                 <li className="nav-item"><a href="#" className="navbar-brand text-white">Home</a></li>
+//                 <li className="nav-item"><a href="#" className="navbar-brand text-white">Photos</a></li>
+//                 <li className="nav-item"><a href="#" className="navbar-brand text-white">Videos</a></li>
+//                 <li className="nav-item"><a href="#" className="navbar-brand text-white">Contact Us</a></li>
 //             </ul>
+//             </div>
 //         </nav>
 //     )
 // }
 
 // export default NavbarCustom
 
+
 import React from "react";
 import ".././index.css";
-
-// function NavbarCustom() {
-//   return (
-//     <navbar className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top-right">
-
-//       <a className="navbar-brand" href="#">Pokemon Website</a>
-//       <button
-//         className="navbar-toggler"
-//         type="button"
-//         data-toggle="collapse"
-//         data-target="#navbarNav"
-//         aria-controls="navbarNav"
-//         aria-expanded="false"
-//         aria-label="Toggle navigation"
-//       >
-//         <span className="navbar-toggler-icon"></span>
-//       </button>
-//       <div className="collapse navbar-collapse" id="navbarNav">
-//         <ul className="navbar-nav ml-auto"> {/* ml-auto: margin-left: auto */}
-//           <li className="nav-item">
-//             <a href="#" className="nav-link active">
-//               Home
-//             </a>
-//           </li>
-//           <li className="nav-item">
-//             <a href="#" className="nav-link">
-//               Photos
-//             </a>
-//           </li>
-//           <li className="nav-item">
-//             <a href="#" className="nav-link">
-//               Videos
-//             </a>
-//           </li>
-//           <li className="nav-item">
-//             <a href="#" className="nav-link">
-//               Contact Us
-//             </a>
-//           </li>
-//         </ul>
-//       </div>
-//     </navbar>
-//   );
-// }
-
-// export default NavbarCustom;
-
+import "bootstrap/dist/css/bootstrap.min.css";  // Import BootstrapCSS
 
 function NavbarCustom() {
   return (
-<nav class="navbar navbar-light bg-light justify-content-between">
-  <a class="navbar-brand">Navbar</a>
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">Search for a Pokemon</input>
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form>
-</nav>
-  )}
+    <nav className="nav navbar-right navbar-expand-lg fixed-top navbar-dark bg-gradient-primary" style = {{float:'right', justifyContent:"flex-end"}}> {/* Added Bootstrap classes */}
+      <div className="container-fluid-xxl">  {/* Wrap in container-fluid for full width */}
+        {/* <a href="#" className="navbar-brand text-white">Your Awesome Website</a> */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ml-auto"> {/* ml-auto: margin-left: auto */}
+            <li className="nav-item">
+              <a href="#" className="nav-link active text-white">
+                Home
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="#" className="nav-link text-blue">
+                Photos
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="#" className="nav-link text-blue">
+                Videos
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="#" className="nav-link text-blue">
+                Contact Us
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
+}
 
 export default NavbarCustom;

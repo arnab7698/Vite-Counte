@@ -1,80 +1,95 @@
 import React, { useState, useEffect } from 'react';
-import ".././index.css";
+import ".././index.css"; // Assuming your CSS file
+import "bootstrap/dist/css/bootstrap.min.css"; // Import BootstrapCSS
 import data1 from './pokemon_full.json';
+import PokeButton from './botton';
 
-  function Card() {
-    const url = "./pokemon_full.json";
-    const [data, setData] = useState([]);
+function Card() {
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
+  const [isHovered, setIsHovered] = useState(false);
 
-    const fetchInfo = async () => {
+  useEffect(() => {
+    const fetchData = async () => {
       try {
-        setData(data1);
-        console.log(data1);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      } 
-    }
-  
-  
-    useEffect(() => {
-      fetchInfo();
-    }, []);
+        setData(data1); // Assuming data1 contains valid Pokemon data
+      } catch (err) {
+        setError(err);
+      }
+    };
 
-    const [favpoke, setFavpoke] = useState([])
-    const addPoke = () => {
-          setFavpoke(...favpoke, pokeObj.title)
-    }
-  
-    return (
+    fetchData();
+  }, []);
 
-      
-      <div className="container">
-        <h1 className="text-center text-success" >🦋POKEMONS🦋</h1>
-        <center>
-          {data1.map((pokeObj) => {
+  const handleDescriptionHover = () => {
+    setIsHovered(!isHovered);
+  };
 
-            const [desc, setDesc] = useState('')
+  const addToFavorites = (pokemon) => {
+    // Implement logic to add Pokemon to favorites (e.g., update separate state or store in local storage)
+  };
 
-            const clickDesc = async () => {
-                setDesc(pokeObj.description)
-                console.log(desc);
-            } 
+  return (
+    <div className="container-fluid bg-black">
+      <h1 className="text-center text-success"> 🦋POKEMONS🦋 </h1>
 
-            const [favpoke, setFavpoke] = useState([])
-            const addPoke = async () => {
-                  setFavpoke(...favpoke, pokeObj.title)
-                  console.log(favpoke);
-            }
-
-            const [isHovered, setIsHovered] = useState(false);
-            let poke = `/pokemons/${pokeObj.id}.png`;
-            console.log(poke);
-            return (
-              <div
-              className="col-md-4 mb-3"
-              key={pokeObj.id}
-              >
-       
-              <img src = {`/pokemons/${pokeObj.id}.png`} style = {{height: "150px", width: "150px"}} />  
-                
-                <h1>{pokeObj.name}</h1>
-                <h1>{pokeObj.species}</h1>
-                <div onTouchMoveCapture = { clickDesc }>{desc}</div>
-
-                <div onMouseEnter={() => setIsHovered(true)}
-                     onMouseLeave={() => setIsHovered(false)}
-                     style={{ opacity: isHovered ? 1.5 : 1 }}>
-                    <h3>{isHovered ? pokeObj.description : ''}</h3>
-                    <h3>Attack is {pokeObj.stats.attack}</h3>
-
-                    {/* <h3>Evolution of the Pokemon : {pokeObj.evolution[0]}</h3> */}
-                    <button onClick = { addPoke }>🦧</button>
+      {error ? (
+        <p>Error fetching Pokemon data: {error.message}</p>
+      ) : (
+        <div className="row row-cols-1 row-cols-lg-3 g-3"> {/* Grid for responsive card layout */}
+          {data.map((pokeObj) => (
+            <div className="col" key={pokeObj.id}>
+              <div className="blurred-image card bg-dark-blue">
+                <div className="row "> {/* Row for image and description */}
+                  <div className="col-md-4">
+                    <img
+                      src={`/pokemons/${pokeObj.id}.png`}
+                      alt={pokeObj.name}
+                      className="card-img-top"
+                      style={{ width: "150%" }}
+                    />
+                  </div>
+                  <div className="col-md-8">
+                    <div className="card-body">
+                      <h2 className="bold card-title">{pokeObj.name}</h2>
+                      <p className="card-text">{pokeObj.species}</p>
+                      {/* <p className="card-text">{pokeObj.abilities}</p>
+                      <p className="card-text">{pokeObj.height}</p>
+                      <p className="card-text">{pokeObj.weight}</p> */}
+                    <div className='description' onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                    style={{ opacity: isHovered ? 1.5 : 1 }}>
+                    <h3 class="h5 text-center">{isHovered ? pokeObj.description : ''}</h3>
+                    </div>
+                    
+                    
+                    <table className="container-fluid table table-lg table-dark" style={{width:200}}>
+                          <tbody>
+                            <tr>
+                              <th scope="row">Height</th>
+                              <td>{pokeObj.height}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Weight</th>
+                              <td>{pokeObj.weight}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Attack</th>
+                              <td>{pokeObj.stats.attack}</td>
+                            </tr>
+                          </tbody>
+                    </table>
+                      <PokeButton pokeObject = {pokeObj.description}/>
+                    </div>
+                  </div>
                 </div>
               </div>
-            );
-          })}
-        </center>
-      </div>
-    )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default Card;
