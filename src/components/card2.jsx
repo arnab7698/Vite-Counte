@@ -2,7 +2,8 @@ import React from 'react'
 
 const SCard2 = ({Id ,name, species, type, abilities}) => {
   return (
-    <div class="card bg-dark-blue ag-courses_item">
+    <div class="container card bg-dark-blue ag-courses_item"
+         style={{ height: "50%" ,width: "100%" }}>
       
       <a href="#" class="ag-courses-item_link">
         <div class="ag-courses-item_bg"></div>
@@ -10,8 +11,8 @@ const SCard2 = ({Id ,name, species, type, abilities}) => {
         src={`/pokemons/${Id}.png`}
         alt={name}
         className="card-img-top"
-        style={{ width: "100%" }}
-      />
+        style={{ height: "50%" ,width: "100%" , bgcolor: "blue"}}
+        />
         
           <span class="ag-courses-item_date">
             {Id}
@@ -19,15 +20,15 @@ const SCard2 = ({Id ,name, species, type, abilities}) => {
         
 
         <div class="ag-courses-item_title">
-          Name is {name}
+          {name}
         </div>
 
         <div class="ag-courses-item_title">
-          Species is {species}
+          {species}
         </div>
 
         <div class="ag-courses-item_title">
-          Pokemon Type is {type}
+          {type}
         </div>
 
         <div class="ag-courses-item_title">

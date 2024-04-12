@@ -2,21 +2,21 @@ import { useRef, useState } from "react";
 import { FiLock } from "react-icons/fi";
 import { motion } from "framer-motion";
 
-const Example = () => {
+const Example = ({name}) => {
   return (
     <div className="grid min-h-[200px] place-content-center bg-neutral-900 p-4">
-      <EncryptButton />
+      <EncryptButton name = {name}/>
     </div>
   );
 };
 
-const TARGET_TEXT = "Encrypt data";
+const TARGET_TEXT = `🦋POKEMON🦋`;
 const CYCLES_PER_LETTER = 2;
-const SHUFFLE_TIME = 50;
+const SHUFFLE_TIME = 30;
 
 const CHARS = "!@#$%^&*():{};|,.<>/?";
 
-const EncryptButton = () => {
+const EncryptButton = ({name}) => {
   const intervalRef = useRef(null);
 
   const [text, setText] = useState(TARGET_TEXT);
@@ -56,19 +56,20 @@ const EncryptButton = () => {
   return (
     <motion.button
       whileHover={{
-        scale: 1.025,
+        scale: 1.00,
       }}
       whileTap={{
-        scale: 0.975,
+        scale: 1.00,
       }}
       onMouseEnter={scramble}
       onMouseLeave={stopScramble}
-      className="group relative overflow-hidden rounded-lg border-[1px] border-neutral-500 bg-neutral-700 px-4 py-2 font-mono font-medium uppercase text-neutral-300 transition-colors hover:text-indigo-300"
+      className="group relative overflow-hidden rounded-lg  bg-neutral-700 px-8 py-1 font-mono font-medium uppercase text-neutral-300 transition-colors hover:text-red-300"
     >
-      <div className="relative z-10 flex items-center gap-2">
-        <FiLock />
-        
+      <div className="relative z-10 flex items-center gap-2" style = {{width : "auto"}}>
+
         <span>{text}</span>
+        {name}
+
       </div>
       <motion.span
         initial={{
@@ -79,7 +80,7 @@ const EncryptButton = () => {
         }}
         transition={{
           repeat: Infinity,
-          repeatType: "mirror",
+          repeatType: "reverse",
           duration: 1,
           ease: "linear",
         }}

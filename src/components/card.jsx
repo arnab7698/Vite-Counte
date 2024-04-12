@@ -34,20 +34,21 @@ function Card() {
   };
 
   return (
-    <div class="ag-format-container">
-    <div className="container-fluid bg-black">
-      
-
+    <div class="ag-format-container" 
+         style={{ width: "1225px" }}
+         >
+    <div className="container-fluid bg-black" style={{ width: "1225px" }}>
+         
       {error ? (
         <p>Error fetching Pokemon data: {error.message}</p>
       ) : (
-        <div className="row row-cols-2 row-cols-lg-3 g-2"> {/* Grid for responsive card layout */}
+        <div className="row row-cols-2 row-cols-lg-5 g-2"> {/* Grid for responsive card layout */}
           {data.map((pokeObj) => (
             <div className="col" key={pokeObj.id}>
               <div className="blurred-image card bg-dark-blue">
-              <DynamicForm />
-              <Example />
-              <FaBeer />
+              {/* <DynamicForm /> */}
+              <Example name = {pokeObj.name}/>
+              
                 <SCard2 Id = {pokeObj.id} name = {pokeObj.name} species = {pokeObj.species} type = {pokeObj.type} abilities = {pokeObj.abilities} />
                 <div className="row "> {/* Row for image and description */}
                     <PokeButton pokeObject = {pokeObj.description}/>
@@ -61,7 +62,7 @@ function Card() {
                     style={{ opacity: isHovered ? 1.5 : 1 }}>
                     <h3 class="h5 text-center">{isHovered ? pokeObj.description : ''}</h3>
                     </div> */} 
-                                    
+
                     </div>
                   </div>
                 </div>
